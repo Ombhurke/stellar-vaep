@@ -1,0 +1,28 @@
+{
+  "name": "stellar-vaep",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Verifiable Agent Escrow Protocol (VAEP) on Stellar/Soroban",
+  "scripts": {
+    "build": "pnpm -r --filter=!contracts run build",
+    "dev": "pnpm --filter @vaep/gateway run dev",
+    "dev:all": "concurrently \"pnpm --filter @vaep/gateway run dev\" \"pnpm --filter @vaep/mcp-provider run dev\" \"pnpm --filter @vaep/dashboard run dev\"",
+    "dev:web": "pnpm --filter @vaep/dashboard run dev",
+    "dev:gateway": "pnpm --filter @vaep/gateway run dev",
+    "dev:provider": "pnpm --filter @vaep/mcp-provider run dev",
+    "test": "pnpm -r --filter=!contracts run test",
+    "test:contracts": "cargo test --manifest-path contracts/escrow/Cargo.toml",
+    "demo:e2e": "tsx scripts/demo-e2e.ts",
+    "keys:generate": "tsx scripts/generate-testnet-keys.ts",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\""
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "concurrently": "^9.1.2",
+    "dotenv": "^16.4.7",
+    "prettier": "^3.4.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "packageManager": "pnpm@10.33.0"
+}
